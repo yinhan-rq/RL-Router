@@ -1,6 +1,10 @@
+# This is the global engine that use pure round-robin scheduling and different engine types based on mode.
 from collections import deque, defaultdict
 from typing import List, Deque
 from simulator.core.engine import LLMEngine
+from simulator.core.engine_optimized import LLMEngineOptimized
+from simulator.core.engine_vtc import LLMEngineVTC
+from simulator.core.engine_qlm import LLMEngineQLM
 from simulator.core.request import Text2SQLRequest, GenerationRequest
 from dataclasses import dataclass
 from .policies import EvenGTLPolicy
@@ -11,32 +15,85 @@ from simulator.core.arrival import PoissonProcess
 
 
 class LLMGlobalEngine:
-    def __init__(self, input_file: str, arrival_rate: float):
-        self.engines = defaultdict(list[LLMEngine])
+    def __init__(self, mode: str = "baseline"):
+        self.hardware_lst = []
+        # Initialize engines based on mode
+        if mode == "baseline":
+            self.engines = defaultdict(list[LLMEngine])
+        elif mode == "rr+pq":
+            self.engines = defaultdict(list[LLMEngineOptimized])
+        elif mode == "vtc":
+            self.engines = defaultdict(list[LLMEngineVTC])
+        elif mode == "qlm":
+            self.engines = defaultdict(list[LLMEngineQLM])
+        else:
+            raise ValueError(f"Unsupported mode: {mode}. Supported modes: baseline, rr+pq, vtc, qlm")
+        self.mode = mode
         self.timers = defaultdict(dict)
         self.pending_requests: Deque[GenerationRequest] = deque()
         self.global_timer = 0
         self.supported_models: set = set()
         self._trace = []
         self.total_requests = 0
-        self.policy = EvenGTLPolicy()
+        self.policy = EvenGTLPolicy()  # All modes use EvenGTLPolicy (round robin)
         self.text2sql_requests: Dict[str, Text2SQLRequest] = {}
-        self.arrival_rate = arrival_rate
-        self.load_requests(input_file, arrival_rate)
+        self._is_trace4 = False
 
-    def add_engine(self, model_name, hardware_name, w_bit, a_bit, kv_bit):
+
+    def add_engine(self, model_name, hardware_name, w_bit, a_bit, kv_bit, w1=1):
         existing_engines = sum([len(x) for x in self.engines.values()])
-        engine = LLMEngine(
-            existing_engines + 1, model_name, hardware_name, w_bit, a_bit, kv_bit
-        )
+        
+        # Create engine based on mode
+        if self.mode == "baseline":
+            engine = LLMEngine(
+                existing_engines + 1, model_name, hardware_name, w_bit, a_bit, kv_bit
+            )
+        elif self.mode == "rr+pq":
+            engine = LLMEngineOptimized(
+                w1, existing_engines + 1, model_name, hardware_name, w_bit, a_bit, kv_bit
+            )
+        elif self.mode == "vtc":
+            engine = LLMEngineVTC(
+                existing_engines + 1, model_name, hardware_name, w_bit, a_bit, kv_bit
+            )
+        elif self.mode == "qlm":
+            engine = LLMEngineQLM(
+                existing_engines + 1, model_name, hardware_name, w_bit, a_bit, kv_bit
+            )
+        
+        # If this is a trace4 workflow, override latency dict using new_obtain_latency
+        if getattr(self, "_is_trace4", False):
+            try:
+                from simulator.core.new_obtain_latency import build_latency_dict as _build_trace4
+                engine.latency_dict = _build_trace4(hardware_name)
+            except Exception:
+                pass
+
         self.engines[model_name].append(engine)
+        self.hardware_lst.append(hardware_name)
         self.supported_models.add(model_name)
         self.policy.prepare(self.engines)
         self.timers[model_name][engine.engine_id] = 0
 
-    def load_requests(self, input_file: str, arrival_rate: float):
+    def load_requests(self, input_file: str, arrival_rate: float, slo: float = None, multi_tenant: bool = False):
         with open(input_file, 'r') as f:
             data = json.load(f)
+        # Detect trace4 workflow: steps are subset of {Selector, Decomposer, Refiner}
+        trace4_steps = {"Selector", "Decomposer", "Refiner"}
+        def _is_trace4_data(dlist):
+            try:
+                for item in dlist:
+                    steps = [cfg.get("step") for cfg in item.get("Text2SQLRequest", [])]
+                    if not steps:
+                        return False
+                    if not set(steps).issubset(trace4_steps):
+                        return False
+                return True
+            except Exception:
+                return False
+
+        self._is_trace4 = _is_trace4_data(data)
+
         if arrival_rate is not None and arrival_rate > 0:
             print(f"Synthesizing arrival time using Poisson process with ar {arrival_rate}")
             pp = PoissonProcess(arrival_rate)
@@ -46,13 +103,47 @@ class LLMGlobalEngine:
             )  # multiply by 2 to be safe
         else:
             print("Arrival rate not provided, assuming all requests arrive at time 0")
-            workload = [0] * len(data)        
+            workload = [0] * len(data)
+        
+        # Calculate SLO if not provided
+        if slo is None:
+            from simulator.core.request import calculate_avg_empirical_time, STANDARD_WORKFLOW
+            slo = sum([calculate_avg_empirical_time(self.hardware_lst, s) for s in STANDARD_WORKFLOW])
+        
+        # Calculate tenant-specific SLOs if multi-tenant mode
+        if multi_tenant:
+            from simulator.core.request import calculate_tenant_slo
+            tenant1_slo = calculate_tenant_slo(self.hardware_lst, 0)  # 2.0x SLO
+            tenant2_slo = calculate_tenant_slo(self.hardware_lst, 1)  # Base SLO
+            print(f"Multi-tenant mode: Tenant 1 SLO = {tenant1_slo:.2f}s, Tenant 2 SLO = {tenant2_slo:.2f}s")
+        else:
+            tenant1_slo = slo
+            tenant2_slo = slo
+        
+        # Choose request class based on detected workflow
+        if self._is_trace4:
+            from simulator.core.request_trace4 import Text2SQLRequest as _RequestCls
+        else:
+            from simulator.core.request import Text2SQLRequest as _RequestCls
+
         # for idx, request_data in enumerate([data[1]]):
         for idx, request_data in enumerate(data):
             request_data["model"] = "meta-llama/Llama-3.1-70B-Instruct"
-            text2sql_req = Text2SQLRequest(
+            
+            # Assign tenant based on request order (first half = tenant 1, second half = tenant 2)
+            if multi_tenant:
+                tenant_id = 0 if idx < len(data) // 2 else 1
+                tenant_slo = tenant1_slo if tenant_id == 0 else tenant2_slo
+            else:
+                tenant_id = 0
+                tenant_slo = slo
+            
+            text2sql_req = _RequestCls(
                 req_id=f"text2sql_{idx}",
-                gen_requests_config=request_data["Text2SQLRequest"]
+                gen_requests_config=request_data["Text2SQLRequest"],
+                slo=tenant_slo,
+                hardware_lst=self.hardware_lst,
+                tenant_id=tenant_id
             )
             self.text2sql_requests[text2sql_req.req_id] = text2sql_req
             first_requests = text2sql_req.create_current_stage_requests(request_data["model"], workload[idx])
@@ -80,6 +171,27 @@ class LLMGlobalEngine:
                 if request.total_time <= SLO:
                     pass_rate += 1
         return pass_rate / len(self.text2sql_requests)
+    
+    def tenant_SLO_pass_rate(self, tenant_id: int, SLO: float):
+        """Calculate SLO pass rate for a specific tenant"""
+        tenant_requests = [req for req in self.text2sql_requests.values() if req.tenant_id == tenant_id]
+        if not tenant_requests:
+            return 0.0
+        
+        pass_rate = 0
+        for request in tenant_requests:
+            if request.current_stage < request.total_stages:
+                continue
+            else:
+                if request.total_time <= SLO:
+                    pass_rate += 1
+        return pass_rate / len(tenant_requests)
+    
+    def multi_tenant_SLO_pass_rate(self, tenant1_SLO: float, tenant2_SLO: float):
+        """Calculate SLO pass rates for both tenants"""
+        tenant1_pass_rate = self.tenant_SLO_pass_rate(0, tenant1_SLO)
+        tenant2_pass_rate = self.tenant_SLO_pass_rate(1, tenant2_SLO)
+        return tenant1_pass_rate, tenant2_pass_rate
 
     def save_results(self, output_file: str):
         results = {}

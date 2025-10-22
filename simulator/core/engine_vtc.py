@@ -5,23 +5,22 @@ from simulator.core.trace import TraceEvent
 from simulator.core.memory_planner import MemoryPlanner
 from simulator.internal.configs.hardware_params import hardware_params
 from typing import List, Deque, Optional
+import uuid
+import numpy as np
 
 from .request import GenerationRequest
 from .global_waitlist import GlobalWaitlist  # Import global waitlist
 from .obtain_latency import build_latency_dict
 
-TEMPLATE_TOKENS = {"Information Retriever": 213,
-                  "extract_keywords": 630, 
-                  "generate_candidate_llama-agent1": 9158,
-                  "generate_candidate_llama-agent": 5292,
-                  "revise": 3059,
-                  "unit_tester": 213,
-                  "generate_unit_test": 436,
-                  "evaluate": 261}
 
-class LLMEngineOptimized:
-    def __init__(self, w1, engine_id, model_name, hardware_name, w_bit, a_bit, kv_bit):
-        self.w1 = w1
+class LLMEngineVTC:
+    def __init__(self, engine_id, model_name, hardware_name, w_bit, a_bit, kv_bit):
+        self.input_price = 1
+        self.output_price = 2
+        self.served = {}
+        self.user_req_list = {}
+        self.fairw = {}
+    
         self.engine_id = engine_id
         self.model_name = model_name
         self.hardware_name = hardware_name
@@ -53,8 +52,22 @@ class LLMEngineOptimized:
     def configure(self):
         pass
 
-    def add_request(self, request: GenerationRequest):
-        self.waiting.append(request)
+    def add_request(self, req: GenerationRequest):
+        self.waiting.append(req)
+        if req.parent_request.req_id not in self.user_req_list:
+            self.user_req_list[req.parent_request.req_id] = deque([req])
+            self.served[req.parent_request.req_id] = 0
+            self.fairw[req.parent_request.req_id] = 1
+        else:
+            self.user_req_list[req.parent_request.req_id].append(req)
+
+        # waiting queue was empty before
+        if len(self.user_req_list[req.parent_request.req_id]) == 1:
+            # lift counter
+            cnts = [v for k, v in self.served.items()
+                      if (len(self.user_req_list[k]) > 0 and k != req.parent_request.req_id)]
+            if len(cnts) > 0:
+                self.served[req.parent_request.req_id] = max(self.served[req.parent_request.req_id], min(cnts))
 
     def update_elapsed_time(self, current_time: float, hardware_name: str):
         for request in self.waiting:
@@ -64,52 +77,26 @@ class LLMEngineOptimized:
     def get_highest_priority_request(self, waitlist) -> Optional[GenerationRequest]:
         if not waitlist:
             return None
-        wanted_request = waitlist[0]
-        highest_priority = float("-inf")
-        for request in waitlist:
-            # if request.step in {req.step for req in self.running} and self.w2 != 0:
-            #     saved_prefill_result = self.analyzer.analyze(
-            #         seqlen=TEMPLATE_TOKENS[request.step],
-            #         batchsize=1,
-            #         w_bit=self.w_bit,
-            #         a_bit=self.a_bit,
-            #         kv_bit=self.kv_bit,
-            #     )
-            #     saved_prefill_time = saved_prefill_result["total_results"]["prefill"]["inference_time"]
-            # else:
-            #     saved_prefill_time = 0
-            # priority = self.w1 * request.urgency + self.w2 * saved_prefill_time
-            if self.w1 == 0:
-                break  # If w1 is 0, do not prioritize based on urgency
-            priority = self.w1 * request.urgency
-            if priority > highest_priority:
-                wanted_request = request
-                highest_priority = priority
-        if self.memory_planner.can_allocate_request(wanted_request):
-            # if wanted_request != self.waiting[0]:
-                # pq_arrive_at = wanted_request.arrive_at
-                # pq_slo = wanted_request.SLO
-                # pq_elapsed_time = wanted_request.elapsed_time
-                # pq_urgency = wanted_request.urgency
-                # pq_empirical_time = (pq_slo - pq_elapsed_time) + pq_urgency
-
-                # fcfs_arrive_at = self.waiting[0].arrive_at
-                # fcfs_slo = self.waiting[0].SLO
-                # fcfs_elapsed_time = self.waiting[0].elapsed_time
-                # fcfs_urgency = self.waiting[0].urgency
-                # fcfs_empirical_time = (fcfs_slo - fcfs_elapsed_time) + fcfs_urgency
-                
-                # print(f"pq_requestid: {wanted_request.req_id}, fcfs_requestid: {self.waiting[0].req_id}")
-                # print(f"pq_requeststep: {wanted_request.step}, fcfs_requeststep: {self.waiting[0].step}")
-                # print(f"pq_arrive_at: {pq_arrive_at}, fcfs_arrive_at: {fcfs_arrive_at}")
-                # print(f"pq_slo: {pq_slo}, fcfs_slo: {fcfs_slo}")
-                # print(f"pq_elapsed_time: {pq_elapsed_time}, fcfs_elapsed_time: {fcfs_elapsed_time}")
-                # print(f"pq_empirical_time: {pq_empirical_time}, fcfs_empirical_time: {fcfs_empirical_time}")
-                # print(f"pq_urgency: {pq_urgency}, fcfs_urgency: {fcfs_urgency}")
-                # print("Request IDs in waiting queue:", [request.req_id for request in self.waiting])
-                # print("Request arrive_at in waiting queue:", [request.arrive_at for request in self.waiting])
-                # print("Request urgency in waiting queue:", [request.urgency for request in self.waiting])
-            return wanted_request
+        if len(self.served) == 0:
+            return None
+        active_served = {k: v for k, v in self.served.items()}
+        # Find the currently waiting request with the lowest counter (self.served)
+        while True:
+            if len(active_served) == 0:
+                break
+            parent_request_id = min(active_served, key=active_served.get)
+            if len(self.user_req_list[parent_request_id]) > 0:
+                req = self.user_req_list[parent_request_id][0]
+                if self.memory_planner.can_allocate_request(req):
+                    self.user_req_list[parent_request_id].popleft()
+                    # update fairness counter
+                    self.served[parent_request_id] += req.input_length * self.input_price / self.fairw[parent_request_id]
+                    active_served[parent_request_id] += req.input_length * self.input_price / self.fairw[parent_request_id]
+                    return req
+                else:
+                    break
+            else:
+                del active_served[parent_request_id]
         return None
 
     def _prefill(self, request: GenerationRequest, start_at: float):
@@ -119,24 +106,6 @@ class LLMEngineOptimized:
             start_at = request.arrive_at
         self.running.append(request)
         request._prefill()
-        # if request.step in {req.step for req in self.running}:
-        #     prefill_result = self.analyzer.analyze(
-        #         seqlen=request.input_length-TEMPLATE_TOKENS[request.step],
-        #         batchsize=1,
-        #         w_bit=self.w_bit,
-        #         a_bit=self.a_bit,
-        #         kv_bit=self.kv_bit,
-        #     )
-        # else:
-
-        # prefill_result = self.analyzer.analyze(
-        #     seqlen=request.input_length,
-        #     batchsize=1,
-        #     w_bit=self.w_bit,
-        #     a_bit=self.a_bit,
-        #     kv_bit=self.kv_bit,
-        # )
-        # prefill_time = prefill_result["total_results"]["prefill"]["inference_time"]
         prefill_time = self.latency_dict[(request.input_length, request.output_length)]["prefill_latency"]
         request.set_prefill_finished_at(start_at + prefill_time)
         if request.output_length == 1:
@@ -158,16 +127,6 @@ class LLMEngineOptimized:
         for req in executable_requests:
             if start_at < req.arrive_at:
                 start_at = req.arrive_at
-            # decode_result = self.analyzer.analyze(
-            #     req.input_length + req.generated_tokens,
-            #     batchsize=max_batch_size,
-            #     w_bit=self.w_bit,
-            #     a_bit=self.a_bit,
-            #     kv_bit=self.kv_bit,
-            # )
-            # decode_time.append(
-            #     decode_result["total_results"]["decode"]["inference_time"]
-            # )
             decode_time.append(
                 self.latency_dict[(req.input_length, req.output_length)]["per_token_decode_latency"]
             )

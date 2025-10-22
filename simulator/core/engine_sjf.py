@@ -19,9 +19,8 @@ TEMPLATE_TOKENS = {"Information Retriever": 213,
                   "generate_unit_test": 436,
                   "evaluate": 261}
 
-class LLMEngineOptimized:
-    def __init__(self, w1, engine_id, model_name, hardware_name, w_bit, a_bit, kv_bit):
-        self.w1 = w1
+class LLMEngineSJF:
+    def __init__(self, engine_id, model_name, hardware_name, w_bit, a_bit, kv_bit):
         self.engine_id = engine_id
         self.model_name = model_name
         self.hardware_name = hardware_name
@@ -62,54 +61,19 @@ class LLMEngineOptimized:
             request.update_urgency(hardware_name)
 
     def get_highest_priority_request(self, waitlist) -> Optional[GenerationRequest]:
+        # Implements Shortest-Job-First (SJF) scheduling using calculate_empirical_time()
         if not waitlist:
             return None
-        wanted_request = waitlist[0]
-        highest_priority = float("-inf")
+        # Find the request with the shortest empirical time
+        sjf_request = None
+        min_empirical_time = float("inf")
         for request in waitlist:
-            # if request.step in {req.step for req in self.running} and self.w2 != 0:
-            #     saved_prefill_result = self.analyzer.analyze(
-            #         seqlen=TEMPLATE_TOKENS[request.step],
-            #         batchsize=1,
-            #         w_bit=self.w_bit,
-            #         a_bit=self.a_bit,
-            #         kv_bit=self.kv_bit,
-            #     )
-            #     saved_prefill_time = saved_prefill_result["total_results"]["prefill"]["inference_time"]
-            # else:
-            #     saved_prefill_time = 0
-            # priority = self.w1 * request.urgency + self.w2 * saved_prefill_time
-            if self.w1 == 0:
-                break  # If w1 is 0, do not prioritize based on urgency
-            priority = self.w1 * request.urgency
-            if priority > highest_priority:
-                wanted_request = request
-                highest_priority = priority
-        if self.memory_planner.can_allocate_request(wanted_request):
-            # if wanted_request != self.waiting[0]:
-                # pq_arrive_at = wanted_request.arrive_at
-                # pq_slo = wanted_request.SLO
-                # pq_elapsed_time = wanted_request.elapsed_time
-                # pq_urgency = wanted_request.urgency
-                # pq_empirical_time = (pq_slo - pq_elapsed_time) + pq_urgency
-
-                # fcfs_arrive_at = self.waiting[0].arrive_at
-                # fcfs_slo = self.waiting[0].SLO
-                # fcfs_elapsed_time = self.waiting[0].elapsed_time
-                # fcfs_urgency = self.waiting[0].urgency
-                # fcfs_empirical_time = (fcfs_slo - fcfs_elapsed_time) + fcfs_urgency
-                
-                # print(f"pq_requestid: {wanted_request.req_id}, fcfs_requestid: {self.waiting[0].req_id}")
-                # print(f"pq_requeststep: {wanted_request.step}, fcfs_requeststep: {self.waiting[0].step}")
-                # print(f"pq_arrive_at: {pq_arrive_at}, fcfs_arrive_at: {fcfs_arrive_at}")
-                # print(f"pq_slo: {pq_slo}, fcfs_slo: {fcfs_slo}")
-                # print(f"pq_elapsed_time: {pq_elapsed_time}, fcfs_elapsed_time: {fcfs_elapsed_time}")
-                # print(f"pq_empirical_time: {pq_empirical_time}, fcfs_empirical_time: {fcfs_empirical_time}")
-                # print(f"pq_urgency: {pq_urgency}, fcfs_urgency: {fcfs_urgency}")
-                # print("Request IDs in waiting queue:", [request.req_id for request in self.waiting])
-                # print("Request arrive_at in waiting queue:", [request.arrive_at for request in self.waiting])
-                # print("Request urgency in waiting queue:", [request.urgency for request in self.waiting])
-            return wanted_request
+            empirical_time = request.calculate_empirical_time(self.hardware_name)
+            if empirical_time < min_empirical_time:
+                min_empirical_time = empirical_time
+                sjf_request = request
+        if sjf_request and self.memory_planner.can_allocate_request(sjf_request):
+            return sjf_request
         return None
 
     def _prefill(self, request: GenerationRequest, start_at: float):

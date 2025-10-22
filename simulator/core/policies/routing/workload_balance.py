@@ -1,6 +1,6 @@
 from ._base import BaseGlobalToLocalPolicy
-from simulator.core.request import GenerationRequest, calculate_empirical_time
-from simulator.core.engine_optimized import LLMEngine
+from simulator.core.request import GenerationRequest
+from simulator.core.engine_optimized import LLMEngineOptimized
 from typing import Dict, List
 import itertools
 import json
@@ -10,17 +10,17 @@ PRICE_PER_HOUR_A40 = 0.6
 PRICE_PER_HOUR_A100 = 1.4
 PRICE_PER_HOUR_A6000 = 0.5
 
-def cost(hardware_name: str, step: str) -> float:
-    if hardware_name == "nvidia_H100":
-        return PRICE_PER_HOUR_H100 * calculate_empirical_time(hardware_name, step)
-    elif hardware_name == "nvidia_A40":
-        return PRICE_PER_HOUR_A40 * calculate_empirical_time(hardware_name, step)
-    elif hardware_name == "nvidia_A100":
-        return PRICE_PER_HOUR_A100 * calculate_empirical_time(hardware_name, step)
-    elif hardware_name == "nvidia_A6000":
-        return PRICE_PER_HOUR_A6000 * calculate_empirical_time(hardware_name, step)
-    else:
-        raise ValueError(f"Unknown hardware name: {hardware_name}")
+# def cost(hardware_name: str, step: str) -> float:
+#     if hardware_name == "nvidia_H100":
+#         return PRICE_PER_HOUR_H100 * calculate_empirical_time(hardware_name, step)
+#     elif hardware_name == "nvidia_A40":
+#         return PRICE_PER_HOUR_A40 * calculate_empirical_time(hardware_name, step)
+#     elif hardware_name == "nvidia_A100":
+#         return PRICE_PER_HOUR_A100 * calculate_empirical_time(hardware_name, step)
+#     elif hardware_name == "nvidia_A6000":
+#         return PRICE_PER_HOUR_A6000 * calculate_empirical_time(hardware_name, step)
+#     else:
+#         raise ValueError(f"Unknown hardware name: {hardware_name}")
 
 class WorkloadBalancePolicy(BaseGlobalToLocalPolicy):
     def __init__(self):
@@ -29,8 +29,17 @@ class WorkloadBalancePolicy(BaseGlobalToLocalPolicy):
         self.engine_workloads = {}
         self.baseline_engine = None
         self.engine_queue = {}
+        # Default to the standard request.calculate_empirical_time; can be overridden for trace4
+        try:
+            from simulator.core.request import calculate_empirical_time as _default_calc
+            self._calculate_empirical_time = _default_calc
+        except Exception:
+            self._calculate_empirical_time = lambda hw, step: 0.0
 
-    def prepare(self, engines: Dict[str, List[LLMEngine]]):
+    def set_empirical_time_fn(self, fn):
+        self._calculate_empirical_time = fn
+
+    def prepare(self, engines: Dict[str, List[LLMEngineOptimized]]):
         self.engines = engines
         for model, engine_list in engines.items():
             for engine in engine_list:
@@ -61,7 +70,7 @@ class WorkloadBalancePolicy(BaseGlobalToLocalPolicy):
         if self.engine_workloads[self.baseline_engine] == 0:
             # self._update_json_file(self.baseline_engine.engine_id, request.step)  # Update JSON
             self.baseline_engine.add_request(request)
-            self.engine_workloads[self.baseline_engine] += calculate_empirical_time(self.baseline_engine.hardware_name, request.step)
+            self.engine_workloads[self.baseline_engine] += self._calculate_empirical_time(self.baseline_engine.hardware_name, request.step)
             # self.engine_workloads[self.baseline_engine] += self.baseline_engine.latency_dict[(request.input_length, request.output_length)]["latency"]
             self.engine_queue[self.baseline_engine.engine_id].append(request.step)
             return
@@ -69,13 +78,15 @@ class WorkloadBalancePolicy(BaseGlobalToLocalPolicy):
         wanted_engine = None     
         for e in self.engines[request.model]:
             if e.hardware_name == "nvidia_A6000":
-                workload_ratio = self.engine_workloads[e]*0.5 / self.engine_workloads[self.baseline_engine]
+                workload_ratio = self.engine_workloads[e] * 0.5 / self.engine_workloads[self.baseline_engine]
             elif e.hardware_name == "nvidia_L40S":
-                workload_ratio = self.engine_workloads[e]*0.5 / self.engine_workloads[self.baseline_engine]
+                workload_ratio = self.engine_workloads[e] * 0.5/ self.engine_workloads[self.baseline_engine]
             else:
                 workload_ratio = self.engine_workloads[e] / self.engine_workloads[self.baseline_engine]
-            # cost_ratio = cost(self.baseline_engine.hardware_name, request.step) / cost(e.hardware_name, request.step)
-            cost_ratio = calculate_empirical_time(self.baseline_engine.hardware_name, request.step) / calculate_empirical_time(e.hardware_name, request.step)
+            # cost_ratio based on empirical time per step
+            base_est = self._calculate_empirical_time(self.baseline_engine.hardware_name, request.step)
+            e_est = self._calculate_empirical_time(e.hardware_name, request.step)
+            cost_ratio = base_est / e_est if e_est != 0 else float("inf")
             priority = alpha * cost_ratio - (1-alpha) * workload_ratio
             if priority > highest_priority:
                 highest_priority = priority
@@ -83,6 +94,6 @@ class WorkloadBalancePolicy(BaseGlobalToLocalPolicy):
         if wanted_engine:
             # self._update_json_file(wanted_engine.engine_id, request.step)  # Update JSON
             wanted_engine.add_request(request)
-            self.engine_workloads[wanted_engine] += calculate_empirical_time(wanted_engine.hardware_name, request.step)
+            self.engine_workloads[wanted_engine] += self._calculate_empirical_time(wanted_engine.hardware_name, request.step)
             # self.engine_workloads[wanted_engine] += wanted_engine.latency_dict[(request.input_length, request.output_length)]["latency"]
             self.engine_queue[wanted_engine.engine_id].append(request.step)

@@ -8,10 +8,11 @@ sys.path.append("../../../")
 from simulator.core.request import STANDARD_WORKFLOW, calculate_avg_empirical_time
 
 hardware_lst = ["nvidia_A100", "nvidia_A100", "nvidia_A6000", "nvidia_L40S"]
-SLO = sum([calculate_avg_empirical_time(hardware_lst, s) for s in STANDARD_WORKFLOW])
+# SLO = sum([calculate_avg_empirical_time(hardware_lst, s) for s in STANDARD_WORKFLOW])
+SLO = 100
 # print(f"SLO: {SLO}")
 # SLO = 142.13
-SCALES = [round(x, 2) for x in [4 + 0.1 * i for i in range(60)]]  # 0.3 to 3.2
+SCALES = [1, 1.5, 2, 2.5, 3]  # 0.3 to 3.2
 
 def calculate_pass_rate(file_path, scale, num_requests=50):
     """
@@ -36,7 +37,7 @@ def main():
     files = [
         "./result/optimized_output0.json",
         "./result/optimized_output1.json",
-        "./result/baseline_output.json"
+        "./result/vtc_output.json"
     ]
 
     labels = ["Optimized Output 0", "Optimized Output 1", "Baseline Output"]
@@ -60,7 +61,8 @@ def main():
     plt.title("Pass Rate vs SLO Scale for the Middle 50 Requests")
     plt.xlabel("SLO Scale")
     plt.ylabel("Pass Rate")
-    plt.ylim(0, 1)
+    plt.xticks([1, 1.5, 2, 2.5, 3],fontsize=16)
+    plt.ylim(0.8, 1.0)  # Only show pass rates between 80% and 100%
     plt.grid(True)
     plt.legend()
     plt.savefig("./result/pass_rate_vs_slo_scale.png")

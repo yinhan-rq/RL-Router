@@ -3,7 +3,8 @@ import subprocess
 import time  # Import the time module
 
 def run_simulations(input_file, n_engines, arrival_rates, gpu_count):
-    alpha_values = [round(0.1 * i, 1) for i in range(0, 6)]  # 0, 0.1, ..., 0.5
+    alpha_values = [round(0.1 * i, 1) for i in range(5, 11)]  # 0, 0.1, ..., 1.0
+    # alpha_values = [0.0]
 
     for arrival_rate in arrival_rates:
         start_time = time.time()  # Record the start time
@@ -11,8 +12,11 @@ def run_simulations(input_file, n_engines, arrival_rates, gpu_count):
             folder_name = os.path.join("result", f"req_rate={arrival_rate}, alpha={alpha}, gpu={gpu_count}")
             os.makedirs(folder_name, exist_ok=True)
 
-            baseline_output = os.path.join(folder_name, "baseline_output.json")
-            optimized_output0 = os.path.join(folder_name, "optimized_output0.json")
+            # vtc_output = os.path.join(folder_name, "vtc_output.json")
+            # qlm_output = os.path.join(folder_name, "qlm_output.json")
+            # sjf_output = os.path.join(folder_name, "sjf_output.json")
+            # baseline_output = os.path.join(folder_name, "baseline_output.json")
+            # optimized_output0 = os.path.join(folder_name, "optimized_output0.json")
             optimized_output1 = os.path.join(folder_name, "optimized_output1.json")
 
             command = [
@@ -29,9 +33,12 @@ def run_simulations(input_file, n_engines, arrival_rates, gpu_count):
             subprocess.run(command, check=True)
 
             # # Move only the specified files to the appropriate folder
+            # os.rename("./result/vtc_output.json", vtc_output)
+            # os.rename("./result/qlm_output.json", qlm_output)
+            # os.rename("./result/sjf_output.json", sjf_output)
             # os.rename("./result/baseline_output.json", baseline_output)
             # os.rename("./result/optimized_output0.json", optimized_output0)
-            # os.rename("./result/optimized_output1.json", optimized_output1)
+            os.rename("./result/optimized_output1.json", optimized_output1)
         end_time = time.time()  # Record the end time
         elapsed_time = end_time - start_time
         print(f"Total execution time for arrival rate {arrival_rate}: {elapsed_time:.2f} seconds")
@@ -40,7 +47,7 @@ if __name__ == "__main__":
 
     input_file = "./input_file_trace1.json"
     n_engines = 1
-    arrival_rates = [0.5, 1.0]  # Iterate over both arrival rates
+    arrival_rates = [0.5]  # Iterate over both arrival rates
     gpu_count = 3
 
     run_simulations(input_file, n_engines, arrival_rates, gpu_count)

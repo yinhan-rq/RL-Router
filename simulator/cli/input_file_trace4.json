@@ -1,0 +1,3302 @@
+[
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1539,
+        "output_length": 274
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1539,
+        "output_length": 274
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2332,
+        "output_length": 49
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1533,
+        "output_length": 69
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1325,
+        "output_length": 152
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1642,
+        "output_length": 211
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2328,
+        "output_length": 82
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1465,
+        "output_length": 37
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2963,
+        "output_length": 56
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2719,
+        "output_length": 220
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3310,
+        "output_length": 125
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2119,
+        "output_length": 127
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2336,
+        "output_length": 39
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1424,
+        "output_length": 21
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1722,
+        "output_length": 160
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1539,
+        "output_length": 274
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1319,
+        "output_length": 129
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1523,
+        "output_length": 61
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2094,
+        "output_length": 69
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1699,
+        "output_length": 208
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1539,
+        "output_length": 274
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1533,
+        "output_length": 171
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2962,
+        "output_length": 143
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2310,
+        "output_length": 215
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2965,
+        "output_length": 156
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2371,
+        "output_length": 268
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2095,
+        "output_length": 50
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1699,
+        "output_length": 20
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2963,
+        "output_length": 56
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2719,
+        "output_length": 220
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2098,
+        "output_length": 51
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1705,
+        "output_length": 160
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1371,
+        "output_length": 34
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2096,
+        "output_length": 53
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1710,
+        "output_length": 113
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1539,
+        "output_length": 444
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1532,
+        "output_length": 163
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1329,
+        "output_length": 224
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2329,
+        "output_length": 31
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1469,
+        "output_length": 10
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2336,
+        "output_length": 39
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1424,
+        "output_length": 21
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1539,
+        "output_length": 274
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1326,
+        "output_length": 223
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1372,
+        "output_length": 41
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1381,
+        "output_length": 213
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1532,
+        "output_length": 163
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2959,
+        "output_length": 63
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2715,
+        "output_length": 86
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1539,
+        "output_length": 274
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1646,
+        "output_length": 147
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3314,
+        "output_length": 129
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2127,
+        "output_length": 192
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1645,
+        "output_length": 213
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1529,
+        "output_length": 108
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3313,
+        "output_length": 109
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2767,
+        "output_length": 224
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1375,
+        "output_length": 20
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2963,
+        "output_length": 56
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2719,
+        "output_length": 220
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1539,
+        "output_length": 274
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3307,
+        "output_length": 79
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2486,
+        "output_length": 213
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2962,
+        "output_length": 143
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2310,
+        "output_length": 215
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2328,
+        "output_length": 82
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1465,
+        "output_length": 37
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3307,
+        "output_length": 79
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2486,
+        "output_length": 213
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1319,
+        "output_length": 129
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2094,
+        "output_length": 69
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1699,
+        "output_length": 208
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1529,
+        "output_length": 108
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3314,
+        "output_length": 129
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2127,
+        "output_length": 192
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1323,
+        "output_length": 269
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2961,
+        "output_length": 88
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2717,
+        "output_length": 215
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1321,
+        "output_length": 107
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1321,
+        "output_length": 107
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2980,
+        "output_length": 130
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2364,
+        "output_length": 231
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1539,
+        "output_length": 274
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2094,
+        "output_length": 69
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1699,
+        "output_length": 208
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1710,
+        "output_length": 172
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1645,
+        "output_length": 213
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2094,
+        "output_length": 51
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1700,
+        "output_length": 114
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2959,
+        "output_length": 63
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2715,
+        "output_length": 86
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1539,
+        "output_length": 274
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1372,
+        "output_length": 41
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1536,
+        "output_length": 126
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1539,
+        "output_length": 274
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3309,
+        "output_length": 101
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2158,
+        "output_length": 62
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1321,
+        "output_length": 107
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2092,
+        "output_length": 52
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1706,
+        "output_length": 83
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3316,
+        "output_length": 100
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 3072,
+        "output_length": 233
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1646,
+        "output_length": 147
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1539,
+        "output_length": 274
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2097,
+        "output_length": 51
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1704,
+        "output_length": 137
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1532,
+        "output_length": 193
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1372,
+        "output_length": 41
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1371,
+        "output_length": 34
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2977,
+        "output_length": 75
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2298,
+        "output_length": 186
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3316,
+        "output_length": 100
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 3072,
+        "output_length": 233
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2959,
+        "output_length": 63
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2715,
+        "output_length": 86
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1321,
+        "output_length": 107
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1539,
+        "output_length": 274
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1527,
+        "output_length": 196
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1371,
+        "output_length": 34
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1642,
+        "output_length": 211
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1539,
+        "output_length": 274
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1324,
+        "output_length": 383
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1716,
+        "output_length": 89
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1532,
+        "output_length": 84
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1317,
+        "output_length": 90
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2980,
+        "output_length": 130
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2364,
+        "output_length": 231
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1647,
+        "output_length": 137
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2339,
+        "output_length": 39
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1427,
+        "output_length": 24
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1532,
+        "output_length": 163
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1319,
+        "output_length": 129
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2091,
+        "output_length": 52
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1704,
+        "output_length": 88
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3309,
+        "output_length": 101
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2158,
+        "output_length": 62
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 492
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2958,
+        "output_length": 134
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2415,
+        "output_length": 152
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3317,
+        "output_length": 96
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2502,
+        "output_length": 236
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1870,
+        "output_length": 389
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 389
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1527,
+        "output_length": 226
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 1729,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3313,
+        "output_length": 109
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2767,
+        "output_length": 224
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1523,
+        "output_length": 61
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 2097,
+        "output_length": 51
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 1702,
+        "output_length": 164
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1374,
+        "output_length": 161
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Selector",
+        "input_length": 3309,
+        "output_length": 135
+      },
+      {
+        "step": "Decomposer",
+        "input_length": 2300,
+        "output_length": 218
+      }
+    ]
+  },
+  {
+    "Text2SQLRequest": [
+      {
+        "step": "Decomposer",
+        "input_length": 1319,
+        "output_length": 156
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      },
+      {
+        "step": "Refiner",
+        "input_length": 928,
+        "output_length": 555
+      }
+    ]
+  }
+]
