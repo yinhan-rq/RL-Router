@@ -304,19 +304,6 @@ class Text2SQLRequest:
             self.current_requests.append(next_request)
             self.request_counter += 1
         return self.current_requests
-        # next_request = GenerationRequest(
-        #     req_id=f"{self.req_id}_req_{self.request_counter}",
-        #     model=model,
-        #     step=current_step,
-        #     slo=0.0,
-        #     input_length=self.gen_requests_config[self.request_counter]["input_length"],
-        #     output_length=self.gen_requests_config[self.request_counter]["output_length"],
-        #     arrive_at=arrive_at,
-        #     parent_request=self
-        # )
-        # self.current_requests.append(next_request)
-        # self.request_counter += 1
-        # return self.current_requests
     
     def update_stage(self, request, current_time: float):
         """更新阶段和总时间"""
@@ -324,3 +311,134 @@ class Text2SQLRequest:
         if self.current_requests == []:
             self.total_time += (current_time - request.arrive_at)
             self.current_stage += 1
+
+
+
+class FullRequest(GenerationRequest):
+    def __init__(self, req_id: str, model: str, step: str, slo: float, input_length: int, output_length: int, 
+                 arrive_at: float, parent_request: Optional['Text2SQLRequest'] = None, input_tokens: List[str] = None, output_tokens: List[str] = None):
+        """
+        Initializes the FullRequest.
+
+        Args:
+            (Inherited params): All parameters from GenerationRequest.
+            input_tokens: A list of strings representing the tokenized prompt.
+            output_tokens: An optional list of already-generated tokens (e.g., if resuming).
+                           Defaults to an empty list.
+        """
+        super().__init__(req_id, model, step, slo, input_length, output_length, 
+                         arrive_at, parent_request)
+        
+        # --- New attributes for FullRequest ---
+        
+        # Store the provided input tokens (the prompt)
+        self.input_tokens: List[str] = input_tokens if input_tokens is not None else []
+        
+        # Initialize the list to store the generated output tokens
+        self.output_tokens: List[str] = output_tokens if output_tokens is not None else []
+        
+        # Store a concatenated string of the output for convenience.
+        # This will be built up as tokens are generated.
+        self.output_text: str = "".join(self.output_tokens)
+        
+        # We can also update the generated_tokens counter from the base class
+        # to be consistent with any provided output_tokens.
+        self.generated_tokens = len(self.output_tokens)
+
+        # KV Cache Block 
+        # 这是此请求的 "页表" (Block Table)。
+        # 它是一个整数列表，存储分配给这个请求的 *物理* Block ID。
+        # 列表的索引是 "逻辑" 块编号，值是 "物理" 块编号。
+        self.block_table: List[int] = []
+
+    def append_token(self, token: str) -> bool:
+        """
+        Appends a new generated token to the request and updates the internal state.
+        
+        This method should be called by the simulator for each generation step
+        instead of the base class's _decode().
+
+        Args:
+            token: The string of the newly generated token.
+
+        Returns:
+            bool: True if the request has finished generating, False otherwise.
+        """
+        # Store the actual token string
+        self.output_tokens.append(token)
+        self.output_text += token  # Assumes tokens can be directly concatenated
+
+        # Call the base class _decode() method.
+        return super()._decode()
+
+    def to_dict(self) -> Dict:
+        """
+        Overrides the parent to_dict() to include the new token lists
+        for logging or serialization.
+        """
+        # Get the base dictionary from the GenerationRequest
+        data = super().to_dict()
+        
+        # Add the new fields specific to FullRequest
+        data.update({
+            "input_tokens": self.input_tokens,
+            "output_tokens": self.output_tokens,
+            "output_text": self.output_text
+        })
+        return data
+
+    def __str__(self):
+        """
+        Provides a more informative string representation for logging.
+        """
+        # Get the base string from GenerationRequest
+        base_str = super().__str__()
+        # Add the token count
+        return (f"{base_str} [FullRequest - step: {self.step}, "
+                f"tokens: {self.generated_tokens}/{self.output_length}]")
+
+    def __repr__(self) -> str:
+        """
+        Makes the REPL output use the custom __str__ method.
+        """
+        return self.__str__()
+    
+    def set_block_table(self, block_table: List[int]):
+        """
+        Sets the block table for this request.
+        """
+        self.block_table = block_table
+    
+    def get_block_table(self) -> List[int]:
+        """
+        Returns the block table for this request.
+        """
+        return self.block_table
+    
+    def append_block(self, block_id: int):
+        """
+        Appends a block ID to the block table.
+        """
+        self.block_table.append(block_id)
+    
+    def get_last_block_id(self) -> Optional[int]:
+        """
+        Get the last block ID in the block table for writing new kv cache block.
+        """
+        if not self.block_table:
+            return None
+        return self.block_table[-1]
+
+    def release_all_blocks(self, block_manager: 'BlockManager'):
+        """
+        在请求完成 (EXIT) 或被中止 (Aborted) 时调用。
+        通知 BlockManager 释放此请求持有的所有物理块。
+        这里的blockManager应该是engine级别的, 所以传入即可, 而不是request
+        """
+        for block_id in self.block_table:
+            # BlockManager 内部会处理引用计数
+            # 只有当 ref_count == 0 时，块才会被真正释放
+            block_manager.free_block(block_id)
+        
+        # 清空自己的页表
+        self.block_table = []

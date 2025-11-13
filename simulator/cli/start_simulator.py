@@ -13,6 +13,7 @@ from huggingface_hub import login
 import matplotlib.pyplot as plt  # Add this import for plotting
 from simulator.core.request import STANDARD_WORKFLOW, calculate_avg_empirical_time
 
+CUR_DIR = "./simulator"
 
 console = Console()
 
@@ -30,13 +31,13 @@ def run_simulation(args, mode):
     
     server.start()
     if mode == "baseline":
-        server.save_results("./result/baseline_output.json")
+        server.save_results(CUR_DIR + "/result/baseline_output.json")
     elif mode == "vtc":
-        server.save_results("./result/vtc_output.json")
+        server.save_results(CUR_DIR + "/result/vtc_output.json")
     elif mode == "rr+pq":
-        server.save_results("./result/rr+pq_output.json")
+        server.save_results(CUR_DIR + "/result/rr+pq_output.json")
     elif mode == "qlm":
-        server.save_results("./result/qlm_output.json")
+        server.save_results(CUR_DIR + "/result/qlm_output.json")
 
     with open(args.trace_output, "w") as f:
         data = {"traceEvents": [asdict(x) for x in server.trace]}
@@ -83,13 +84,13 @@ def run_simulation_optimized(args, w1=1, index=0, mode="hexflow"):
 
     server.start()
     if mode == "vtc":
-        server.save_results("./result/vtc_output.json")
+        server.save_results(CUR_DIR + "/result/vtc_output.json")
     elif mode == "qlm":
-        server.save_results("./result/qlm_output.json")
+        server.save_results(CUR_DIR + "/result/qlm_output.json")
     else:
-        server.save_results(f"./result/optimized_output{index}.json")
+        server.save_results(f"{CUR_DIR}/result/optimized_output{index}.json")
 
-    with open(f"./result/optimized_trace_output{index}.json", "w") as f:
+    with open(f"{CUR_DIR}/result/optimized_trace_output{index}.json", "w") as f:
         data = {"traceEvents": [asdict(x) for x in server.trace]}
         f.write(json.dumps(data, indent=4))
     stats = {
@@ -97,7 +98,7 @@ def run_simulation_optimized(args, w1=1, index=0, mode="hexflow"):
         # "failed": server.failed_requests,
         "config": server.config,
     }
-    with open(f"./result/optimized_stats_output{index}.json", "w") as f:
+    with open(f"{CUR_DIR}/result/optimized_stats_output{index}.json", "w") as f:
         f.write(json.dumps(stats, indent=4))
 
     print(end="\n")

@@ -1,5 +1,8 @@
 import os
 import sys
+import pathlib
+
+THIS_DIR = pathlib.Path(__file__).parent
 
 decode_time_per_token = {"nvidia_A100": 0.035,
                           "nvidia_A6000": 0.058,
@@ -8,9 +11,9 @@ decode_time_per_token = {"nvidia_A100": 0.035,
 def obtain_throughput(gpu_type):
     # Map GPU type to the corresponding throughput file
     throughput_files = {
-        "nvidia_A100": "../core/Actual_latency/results_A100.txt",
-        "nvidia_A6000": "../core/Actual_latency/results_A6000.txt",
-        "nvidia_L40S": "../core/Actual_latency/results_L40S.txt"
+        "nvidia_A100": THIS_DIR / "Actual_latency/results_A100.txt",
+        "nvidia_A6000": THIS_DIR / "Actual_latency/results_A6000.txt",
+        "nvidia_L40S": THIS_DIR / "Actual_latency/results_L40S.txt"
     }
     file_path = throughput_files.get(gpu_type)
     
@@ -31,7 +34,7 @@ def build_latency_dict(gpu_type):
     """
     latency_dict = {}
     throughput_list = obtain_throughput(gpu_type)
-    requests_file = "../core/Actual_latency/requests.txt"
+    requests_file = THIS_DIR / "Actual_latency/requests.txt"
 
     with open(requests_file, "r") as f:
         for i, line in enumerate(f):
